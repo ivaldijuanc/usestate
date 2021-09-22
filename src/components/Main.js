@@ -46,7 +46,7 @@ function Main(){
             <input type="text" value={menor5} onChange={menorQue5}/> 
 
             <hr />
-            <p>Texto en MAyusculas dentro de h4</p>
+            <p>Texto en MAyusculas dentro de h4 - Falta pasar a mayus</p>
             <input type="text" value={enh4} onChange={textoenh4}/> 
             <h4 style={{
                 border: '1px solid black', BackgroundColor: '#123456'
