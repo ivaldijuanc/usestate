@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Main(){
     // USEsTATE DEVUELVE UN ARRAY CON DOS POSICIONES
@@ -30,9 +30,19 @@ function Main(){
     }
 
     const textoenh4 = (e) =>{        
-        setenh4(e.target.value)
+        setenh4((e.target.value).toUpperCase())
     }
-
+    
+    const [count, setCount] = useState(0);
+    
+    useEffect(() => {        
+        if(count < 5)  {
+            {console.clear()}
+            {console.log(`Hiciste click ${count} veces` )};            
+        }else
+            {console.log(`Hiciste click ${count} veces. Cortala!!!` )}
+      });
+ 
     return(
         <div>
             <h2>Hook useState</h2>
@@ -46,12 +56,20 @@ function Main(){
             <input type="text" value={menor5} onChange={menorQue5}/> 
 
             <hr />
-            <p>Texto en MAyusculas dentro de h4 - Falta pasar a mayus</p>
-            <input type="text" value={enh4} onChange={textoenh4}/> 
+            <p>Texto en MAyusculas dentro de h4</p>
+            <input type="text" onChange={textoenh4}/> {/** podria agregar value={enh4} y se actualizaria tambien el imput
+             * en este caso quiero que el h4 pase a mayus y lo que esta en el input quede como esta.
+             */}
             <h4 style={{
-                border: '1px solid black', BackgroundColor: '#123456'
+                border: '1px solid red', backgroundColor: '#123456', color: 'white'
                 }}>Valor mostrado en este tag = {enh4} </h4>                
-                
+            
+            <hr />
+            <h2>Inicio de UseEffect</h2>
+            <p>Contando: {count}</p>
+            <button onClick={() => setCount(count + 1)}>Clickeame</button>
+            <button onClick={() => setCount(0)}>A Cero</button>
+            
         </div>
     )
 }
